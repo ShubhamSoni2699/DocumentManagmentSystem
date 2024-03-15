@@ -1,0 +1,14 @@
+import multer from "multer";
+
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        const {name} = req.body.name;
+        cb(null, `./uploads/${name}/img`)
+    },
+    filename: function (req, file, cb) {
+        const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
+        cb(null, file.fieldname + '-' + uniqueSuffix);
+    }
+}); 
+
+export const uploadPicture = multer({ storage: storage });
