@@ -9,7 +9,8 @@ const appSchema = new mongoose.Schema(
         },
         noOfUsers:{
             type:Number,
-            required:true
+            required:true,
+            default:0
         }
     },
     {timestamps:true}
